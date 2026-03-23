@@ -515,7 +515,7 @@ def main() -> None:
     log.info(f"  Overall        : {metrics['overall_string_match']:.2f}")
     log.info(f"  N samples      : {metrics['n_samples']}")
     log.info("  Per-task breakdown:")
-    for task, m in metrics["by_type"].items():
+    for task, m in metrics["by_task"].items():
         log.info(f"    {task:30s}  string_match={m['string_match']:6.2f}  n={m['n']}")
     log.info(f"Full results saved to {output_path}")
 

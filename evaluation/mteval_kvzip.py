@@ -3,15 +3,15 @@
 # SPDX-License-Identifier: Apache-2.0
 
 """
-MT-Eval benchmark evaluation with Qwen3-8B + KVzipPress.
+MT-Eval benchmark evaluation with Qwen3-8B + KV press.
 
 Runs inference on the FIRST dialogue of a chosen MT-Eval subset,
-executing each turn sequentially with fresh KVzip compression on the
+executing each turn sequentially with fresh KV compression on the
 accumulated multi-turn context.
 
 Usage
 -----
-# Default: recollection_multi_cls, first row
+# Default: recollection_multi_cls, first row (KVzipPress)
 python mteval_kvzip.py
 
 # Different subset
@@ -19,6 +19,11 @@ python mteval_kvzip.py --subset expansion_multi
 
 # Adjust compression
 python mteval_kvzip.py --compression_ratio 0.3
+
+# Use a different press
+python mteval_kvzip.py --press expected_attention
+python mteval_kvzip.py --press kvzap
+python mteval_kvzip.py --press fastkvzip
 
 Dataset
 -------
@@ -57,6 +62,7 @@ import json
 import logging
 import re
 import string
+import time
 from pathlib import Path
 
 import torch
@@ -64,7 +70,7 @@ from datasets import load_dataset
 from transformers import AutoModelForCausalLM, AutoTokenizer, DynamicCache
 
 import kvpress  # noqa: F401  – triggers patch_attention_functions() on import
-from kvpress import KVzipPress
+from kvpress import ExpectedAttentionPress, FastKVzipPress, KVzapPress, KVzipPress
 
 logger = logging.getLogger(__name__)
 
@@ -151,7 +157,7 @@ def tokenize_for_turn(
 @torch.inference_mode()
 def run_inference(
     model,
-    press: KVzipPress,
+    press,
     context_ids: torch.Tensor,
     question_ids: torch.Tensor,
     max_new_tokens: int,
@@ -264,9 +270,9 @@ def score_open(generated: str, reference: str) -> float:
     return round(_rouge_l_recall(generated, reference) * 100, 2)
 
 
-def get_scorer(subset: str):
+def get_scorer(subset: str | None):
     """Return the appropriate scoring function based on the subset name."""
-    if "cls" in subset:
+    if subset is not None and "cls" in subset:
         return score_cls
     return score_open
 
@@ -289,7 +295,7 @@ def parse_args() -> argparse.Namespace:
         help="HuggingFace dataset ID",
     )
     parser.add_argument(
-        "--subset", default="recollection_multi_cls",
+        "--subset", default=None,
         help="Dataset config/subset name",
     )
     parser.add_argument(
@@ -301,11 +307,16 @@ def parse_args() -> argparse.Namespace:
         help="Which dialogue row to evaluate (0-indexed)",
     )
     parser.add_argument(
+        "--press", default="kvzip",
+        choices=["kvzip", "expected_attention", "kvzap", "fastkvzip"],
+        help="KV press algorithm to use",
+    )
+    parser.add_argument(
         "--compression_ratio", type=float, default=0.5,
         help="Fraction of KV pairs to prune",
     )
     parser.add_argument(
-        "--max_new_tokens", type=int, default=256,
+        "--max_new_tokens", type=int, default=4096,
         help="Maximum tokens to generate per turn",
     )
     parser.add_argument(
@@ -332,11 +343,21 @@ def main() -> None:
     log = logging.getLogger(__name__)
 
     device = args.device or ("cuda:0" if torch.cuda.is_available() else "cpu")
+    wall_start = time.perf_counter()
 
     # ── Load dataset ──────────────────────────────────────────────────────────
-    log.info(f"Loading {args.dataset} (subset={args.subset}, split={args.split}) ...")
-    ds = load_dataset(args.dataset, args.subset, split=args.split)
-    sample = ds[args.row_index]
+    local_path = Path(args.dataset)
+    if local_path.exists() and local_path.is_file():
+        log.info(f"Loading local file {args.dataset} ...")
+        with open(local_path, encoding="utf-8") as f:
+            sample = json.load(f)
+    else:
+        if args.subset is None:
+            parser_error = "--subset is required when loading from HuggingFace (e.g. recollection_multi_cls)"
+            raise ValueError(parser_error)
+        log.info(f"Loading {args.dataset} (subset={args.subset}, split={args.split}) ...")
+        ds = load_dataset(args.dataset, args.subset, split=args.split)
+        sample = ds[args.row_index]
     conv = sample["conv"]
     dialogue_id = sample["id"]
     n_turns = len(conv)
@@ -358,8 +379,15 @@ def main() -> None:
     )
     model.eval()
 
-    press = KVzipPress(compression_ratio=args.compression_ratio)
-    scorer = get_scorer(args.subset)
+    press_map = {
+        "kvzip": KVzipPress,
+        "expected_attention": ExpectedAttentionPress,
+        "kvzap": KVzapPress,
+        "fastkvzip": FastKVzipPress,
+    }
+    press = press_map[args.press](compression_ratio=args.compression_ratio)
+    subset_tag = args.subset if args.subset is not None else Path(args.dataset).stem
+    scorer = get_scorer(subset_tag)
 
     # ── Sequential turn execution ─────────────────────────────────────────────
     history: list[dict] = []  # accumulated reference turns
@@ -367,7 +395,7 @@ def main() -> None:
     inference_turn_idx = 0
 
     log.info("\n" + "=" * 80)
-    log.info(f"Dialogue: {dialogue_id}  |  Subset: {args.subset}")
+    log.info(f"Dialogue: {dialogue_id}  |  Subset: {subset_tag}")
     log.info("=" * 80)
 
     for turn_idx, turn in enumerate(conv):
@@ -430,6 +458,8 @@ def main() -> None:
         torch.cuda.empty_cache()
 
     # ── Summary ───────────────────────────────────────────────────────────────
+    elapsed_sec = time.perf_counter() - wall_start
+
     if results:
         scores = [r["score"] for r in results]
         avg_score = sum(scores) / len(scores)
@@ -438,10 +468,12 @@ def main() -> None:
         log.info("SUMMARY")
         log.info("=" * 80)
         log.info(f"Dialogue     : {dialogue_id}")
-        log.info(f"Subset       : {args.subset}")
+        log.info(f"Subset       : {subset_tag}")
+        log.info(f"Press        : {args.press}")
         log.info(f"Compression  : {args.compression_ratio}")
         log.info(f"Turns scored : {len(results)}")
         log.info(f"Avg score    : {avg_score:.2f}")
+        log.info(f"Total time   : {elapsed_sec:.1f}s ({elapsed_sec / 60:.1f}min)")
         log.info("Per-turn scores:")
         for r in results:
             log.info(
@@ -451,20 +483,22 @@ def main() -> None:
     else:
         avg_score = 0.0
         log.info("No inference turns found in this dialogue.")
+        log.info(f"Total time   : {elapsed_sec:.1f}s ({elapsed_sec / 60:.1f}min)")
 
     # ── Save results ──────────────────────────────────────────────────────────
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     model_tag = args.model.replace("/", "--")
     output_path = (
-        output_dir / f"{model_tag}_{args.subset}_row{args.row_index}_kvzip_cr{args.compression_ratio:.2f}.json"
+        output_dir / f"{model_tag}_{subset_tag}_row{args.row_index}_{args.press}_cr{args.compression_ratio:.2f}.json"
     )
 
     output_data = {
         "config": {
             "model": args.model,
-            "subset": args.subset,
+            "subset": subset_tag,
             "row_index": args.row_index,
+            "press": args.press,
             "compression_ratio": args.compression_ratio,
             "max_new_tokens": args.max_new_tokens,
         },
