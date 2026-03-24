@@ -148,7 +148,13 @@ def run_inference(
     cache = DynamicCache()
 
     # ── 1. Prefill (press compression happens at context manager exit) ────────
-    with press(model):
+    if press is not None:
+        with press(model):
+            model.model(
+                input_ids=context_ids,
+                past_key_values=cache,
+            )
+    else:
         model.model(
             input_ids=context_ids,
             past_key_values=cache,
@@ -176,7 +182,7 @@ def run_inference(
     if not isinstance(stop_ids, list):
         stop_ids = [stop_ids]
 
-    for step in range(max_new_tokens - 1):
+    for step in tqdm(range(max_new_tokens - 1), desc="Generating", leave=False):
         outputs = model(
             input_ids=generated_ids[-1].unsqueeze(0).unsqueeze(0),
             past_key_values=cache,
@@ -325,7 +331,11 @@ def worker(
         "kvzap": KVzapPress,
         "fastkvzip": FastKVzipPress,
     }
-    press = press_map[args.press](compression_ratio=args.compression_ratio)
+    if args.compression_ratio == 0.0:
+        press = None
+        log.info("compression_ratio=0 → skipping press (no KV compression)")
+    else:
+        press = press_map[args.press](compression_ratio=args.compression_ratio)
 
     # Round-robin shard
     shard = samples[rank::world_size]
@@ -434,7 +444,7 @@ def parse_args() -> argparse.Namespace:
         help="HuggingFace model ID or local path",
     )
     parser.add_argument(
-        "--dataset", default="bigcode/bigcodebench-hard",
+        "--dataset", default="bigcode/bigcodebench",
         help="HuggingFace dataset ID",
     )
     parser.add_argument(
@@ -451,11 +461,11 @@ def parse_args() -> argparse.Namespace:
         help="Fraction of KV pairs to prune (0 = no compression)",
     )
     parser.add_argument(
-        "--max_context_length", type=int, default=4096,
+        "--max_context_length", type=int, default=16384,
         help="Maximum context token length",
     )
     parser.add_argument(
-        "--max_new_tokens", type=int, default=4096,
+        "--max_new_tokens", type=int, default=16384,
         help="Maximum tokens to generate (includes thinking tokens)",
     )
     parser.add_argument(
