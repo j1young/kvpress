@@ -108,26 +108,84 @@ def tokenize_for_turn(
     history: list[dict],
     current_user_msg: str,
     max_context_length: int,
-) -> tuple[torch.Tensor, torch.Tensor]:
+    n_protected_recent: int = 0,
+) -> tuple[torch.Tensor | None, torch.Tensor | None, torch.Tensor]:
     """
     Tokenize accumulated multi-turn context + current user message into
-    context_ids / question_ids using the separator trick.
+    compress_ids / protected_ids / question_ids using the separator trick.
 
     KVzip compatibility:
       KVzip's prefix_length = len("<|im_start|>user\\n") for Qwen3.
-      Our context_ids starts with exactly that prefix, so the alignment
+      Our compress_ids starts with exactly that prefix, so the alignment
       is correct.  The multi-turn special tokens (role tags between turns)
       are part of the scored content, which is fine – KVzip reconstructs
       them just like normal text tokens.
 
+    Parameters
+    ----------
+    n_protected_recent : int
+        Number of recent history turns to exclude from compression.
+        0 means compress everything (original behavior).
+
     Returns
     -------
-    context_ids  : (1, ctx_len)
-    question_ids : (1, q_len)  – just the closing/assistant-opening tokens
+    compress_ids  : (1, c_len) or None – tokens to compress via press
+    protected_ids : (1, p_len) or None – recent turns, kept uncompressed
+    question_ids  : (1, q_len) – closing/assistant-opening tokens
     """
     separator = "<<<SEP_MTEVAL>>>"
-    messages = build_messages(history, current_user_msg + separator)
+    boundary = "<<<BOUNDARY_MTEVAL>>>"
 
+    need_split = n_protected_recent > 0 and len(history) > n_protected_recent
+
+    if need_split:
+        old_history = history[:-n_protected_recent]
+        recent_history = history[-n_protected_recent:]
+
+        # Build messages with boundary marker at end of last old-history assistant content
+        messages = []
+        for turn in old_history[:-1]:
+            messages.append({"role": "user", "content": turn["user"]})
+            messages.append({"role": "assistant", "content": turn["sys"]})
+        messages.append({"role": "user", "content": old_history[-1]["user"]})
+        messages.append({"role": "assistant", "content": old_history[-1]["sys"] + boundary})
+        for turn in recent_history:
+            messages.append({"role": "user", "content": turn["user"]})
+            messages.append({"role": "assistant", "content": turn["sys"]})
+        messages.append({"role": "user", "content": current_user_msg + separator})
+
+        full_text = tokenizer.apply_chat_template(
+            messages,
+            add_generation_prompt=True,
+            tokenize=False,
+            enable_thinking=False,
+        )
+        compress_text, rest = full_text.split(boundary, maxsplit=1)
+        protected_text, question_suffix = rest.split(separator, maxsplit=1)
+
+        compress_ids = tokenizer.encode(compress_text, return_tensors="pt", add_special_tokens=False)
+        protected_ids = tokenizer.encode(protected_text, return_tensors="pt", add_special_tokens=False)
+        question_ids = tokenizer.encode(question_suffix, return_tensors="pt", add_special_tokens=False)
+
+        total_ctx = compress_ids.shape[1] + protected_ids.shape[1]
+        if total_ctx > max_context_length:
+            logger.warning(
+                f"Context truncated from {total_ctx} to {max_context_length} tokens "
+                f"(compress part only)."
+            )
+            max_compress = max_context_length - protected_ids.shape[1]
+            if max_compress > 0:
+                compress_ids = compress_ids[:, :max_compress]
+            else:
+                compress_ids = None
+                protected_ids = protected_ids[:, :max_context_length]
+
+        return compress_ids, protected_ids, question_ids
+
+    # No split: original behavior or all history protected
+    no_compress = n_protected_recent > 0 and len(history) <= n_protected_recent
+
+    messages = build_messages(history, current_user_msg + separator)
     full_text = tokenizer.apply_chat_template(
         messages,
         add_generation_prompt=True,
@@ -135,8 +193,6 @@ def tokenize_for_turn(
         enable_thinking=False,
     )
     context_text, question_suffix = full_text.split(separator, maxsplit=1)
-    # context_text   = "...<|im_start|>user\n{current_user_msg}"
-    # question_suffix = "<|im_end|>\n<|im_start|>assistant\n"
 
     context_ids = tokenizer.encode(context_text, return_tensors="pt", add_special_tokens=False)
     question_ids = tokenizer.encode(question_suffix, return_tensors="pt", add_special_tokens=False)
@@ -147,7 +203,9 @@ def tokenize_for_turn(
         )
         context_ids = context_ids[:, :max_context_length]
 
-    return context_ids, question_ids
+    if no_compress:
+        return None, context_ids, question_ids
+    return context_ids, None, question_ids
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -158,34 +216,52 @@ def tokenize_for_turn(
 def run_inference(
     model,
     press,
-    context_ids: torch.Tensor,
+    compress_ids: torch.Tensor | None,
+    protected_ids: torch.Tensor | None,
     question_ids: torch.Tensor,
     max_new_tokens: int,
     tokenizer,
 ) -> str:
     """
-    Prefill with KVzip compression then greedily decode the answer.
-    Mirrors pipeline.py _forward + generate_answer.
+    Split-prefill with optional KV compression then greedily decode the answer.
+
+    Phase 1: Prefill compress_ids WITH press (compressed).
+    Phase 2: Prefill protected_ids WITHOUT press (uncompressed).
+    Phase 3: Process question_ids to get first logit.
+    Phase 4: Greedy decode.
     """
     device = next(model.parameters()).device
-    context_ids = context_ids.to(device)
     question_ids = question_ids.to(device)
-    context_length = context_ids.shape[1]
+    offset = 0  # tracks absolute position in the original sequence
 
     cache = DynamicCache()
 
-    # ── 1. Prefill (KVzip compression happens at context manager exit) ────────
-    with press(model):
-        model.model(
-            input_ids=context_ids,
-            past_key_values=cache,
-        )
+    # ── 1. Prefill compressed part (press applied) ────────────────────────────
+    if compress_ids is not None and compress_ids.shape[1] > 0:
+        compress_ids = compress_ids.to(device)
+        with press(model):
+            model.model(
+                input_ids=compress_ids,
+                past_key_values=cache,
+            )
+        offset = compress_ids.shape[1]
 
-    # ── 2. Process question (closing/assistant-opening) tokens ────────────────
+    # ── 2. Prefill protected part (no compression) ───────────────────────────
+    if protected_ids is not None and protected_ids.shape[1] > 0:
+        protected_ids = protected_ids.to(device)
+        position_ids = torch.arange(
+            offset, offset + protected_ids.shape[1], device=device,
+        ).unsqueeze(0)
+        model.model(
+            input_ids=protected_ids,
+            past_key_values=cache,
+            position_ids=position_ids,
+        )
+        offset += protected_ids.shape[1]
+
+    # ── 3. Process question (closing/assistant-opening) tokens ────────────────
     position_ids = torch.arange(
-        context_length,
-        context_length + question_ids.shape[1],
-        device=device,
+        offset, offset + question_ids.shape[1], device=device,
     ).unsqueeze(0)
 
     outputs = model(
@@ -195,7 +271,7 @@ def run_inference(
         num_logits_to_keep=1,
     )
 
-    # ── 3. Greedy decode ──────────────────────────────────────────────────────
+    # ── 4. Greedy decode ──────────────────────────────────────────────────────
     position_ids = position_ids[:, -1:] + 1
     generated_ids = [outputs.logits[0, -1].argmax()]
 
@@ -324,6 +400,10 @@ def parse_args() -> argparse.Namespace:
         help="Maximum context token length",
     )
     parser.add_argument(
+        "--no_compress_recent", type=int, default=0,
+        help="Number of recent history turns to exclude from compression (0=compress all)",
+    )
+    parser.add_argument(
         "--device", default=None,
         help="CUDA device (e.g. 'cuda:0'). Defaults to cuda:0 if available.",
     )
@@ -376,6 +456,7 @@ def main() -> None:
         torch_dtype=torch.bfloat16,
         device_map=device,
         trust_remote_code=True,
+        attn_implementation="flash_attention_2",
     )
     model.eval()
 
@@ -415,18 +496,25 @@ def main() -> None:
         # ── Inference turn ────────────────────────────────────────────────────
         inference_turn_idx += 1
 
-        context_ids, question_ids = tokenize_for_turn(
-            tokenizer, history, user_msg, args.max_context_length
+        compress_ids, protected_ids, question_ids = tokenize_for_turn(
+            tokenizer, history, user_msg, args.max_context_length,
+            n_protected_recent=args.no_compress_recent,
         )
-        ctx_tokens = context_ids.shape[1]
-        log.info(f"Context tokens: {ctx_tokens}")
+        compress_tokens = compress_ids.shape[1] if compress_ids is not None else 0
+        protected_tokens = protected_ids.shape[1] if protected_ids is not None else 0
+        ctx_tokens = compress_tokens + protected_tokens
+        log.info(
+            f"Context tokens: {ctx_tokens} "
+            f"(compress={compress_tokens}, protected={protected_tokens})"
+        )
 
         try:
             with torch.inference_mode():
                 prediction = run_inference(
                     model=model,
                     press=press,
-                    context_ids=context_ids,
+                    compress_ids=compress_ids,
+                    protected_ids=protected_ids,
                     question_ids=question_ids,
                     max_new_tokens=args.max_new_tokens,
                     tokenizer=tokenizer,
@@ -471,6 +559,7 @@ def main() -> None:
         log.info(f"Subset       : {subset_tag}")
         log.info(f"Press        : {args.press}")
         log.info(f"Compression  : {args.compression_ratio}")
+        log.info(f"No-compress-recent : {args.no_compress_recent}")
         log.info(f"Turns scored : {len(results)}")
         log.info(f"Avg score    : {avg_score:.2f}")
         log.info(f"Total time   : {elapsed_sec:.1f}s ({elapsed_sec / 60:.1f}min)")
@@ -500,6 +589,7 @@ def main() -> None:
             "row_index": args.row_index,
             "press": args.press,
             "compression_ratio": args.compression_ratio,
+            "no_compress_recent": args.no_compress_recent,
             "max_new_tokens": args.max_new_tokens,
         },
         "dialogue_id": dialogue_id,
