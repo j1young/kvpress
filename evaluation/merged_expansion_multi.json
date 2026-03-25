@@ -1,0 +1,495 @@
+{
+  "id": "merged_expansion_multi",
+  "conv": [
+    {
+      "user": "Content: In the bustling city of Gastropolis, where the scent of spices and the sizzle of pans wafted through the air, there lived a chef named Luminara, whose culinary skills were the stuff of legend. Luminara’s restaurant, The Enchanted Pot, was tucked away in an alley draped with ivy and fairy lights, a hidden gem known only to the most adventurous of food lovers.\n\nLuminara was not just any chef; she was a culinary alchemist, blending traditional ingredients with rare, magical flora and fauna. Her signature dish was the Whimsical Soup, a broth that changed flavor with the mood of the diner, leaving them delighted and astonished in equal measure.\n\nThe story begins on a crisp autumn morning when Luminara received a mysterious letter sealed with an emerald wax stamp. The letter was an invitation to embark on a quest to discover the legendary Moonberry, an elusive ingredient said to unlock the true potential of any dish it graced. It was an adventure that could cement Luminara's place in the annals of culinary history.\n\nWith her trusty talking spatula, Spatulon, by her side, Luminara set out on her quest. She traversed through the Whispering Woods, where trees shared secrets and the air shimmered with enchantment. She scaled the peaks of Mount Savor, each step bringing her closer to the Moonberry, which was guarded by the mythical creature known as the Gastrogriff.\n\nUpon reaching the peak at twilight, Luminara found the Gastrogriff perched beside a single, luminescent Moonberry bush. With a respectful nod to the majestic beast, she approached and explained her quest for culinary greatness. The Gastrogriff, impressed by Luminara's passion and determination, offered her a single Moonberry, its glow reflecting in her hopeful eyes.\n\nLuminara returned to Gastropolis, her apron stained with the adventures of her journey. The Moonberry was the star of her next creation, a dish that didn't just resonate with the diner's mood but also told a story, a story of a chef's quest for the extraordinary.\n\nAs patrons of The Enchanted Pot took their first bites, they were transported through Luminara's journey, tasting the whispering woods, the icy peaks, and the warmth of triumph. Luminara had not just found an ingredient; she had woven her tale into the tapestry of Gastropolis's rich culinary lore. The Enchanted Pot was no longer just a restaurant; it was a portal to the wonders of imagination, one dish at a time. \n\nInstruction: Translate the first paragraph to Chinese. Just provide the translation directly without any further explanations or extra output.",
+      "sys": "在繁忙的加斯托波利斯市，香料的香气和平底锅的嘶嘶声在空气中飘荡，住着一位名叫卢米纳拉的厨师，她的烹饪技巧是传说中的。卢米纳拉的餐厅，名为“魔法锅”，隐藏在一个长满常春藤和仙女灯的小巷里，是只有最爱冒险的美食爱好者才知道的隐藏宝石。",
+      "id": "1_trans_1",
+      "do_inference": true,
+      "inst": "Translate the first paragraph to Chinese. Just provide the translation directly without any further explanations or extra output."
+    },
+    {
+      "user": "Base on the initially provided content, answer the question: What magical ingredient did Luminara seek on her quest, and which mythical creature guarded it?",
+      "sys": "Moonberry, Gastrogriff",
+      "id": "1_short-qa_1",
+      "do_inference": true,
+      "inst": "Base on the initially provided content, answer the question: What magical ingredient did Luminara seek on her quest, and which mythical creature guarded it?"
+    },
+    {
+      "user": "Write a short summary based on the initially provided content. Do not include any further explanations or extra output in your response.",
+      "sys": "In Gastropolis, a city known for its rich culinary scene, lived a legendary chef, Luminara, who owned a quaint restaurant, The Enchanted Pot. Luminara, renowned for her unique ability to blend traditional ingredients with magical elements, crafted dishes that adapted to the diner's mood. Her life took an adventurous turn when she received an invitation to find the Moonberry, a rare ingredient believed to elevate any dish. Accompanied by her talking spatula, Spatulon, she journeyed through mystical lands, including the Whispering Woods and Mount Savor, to acquire the Moonberry from the Gastrogriff, a mythical guardian. Upon her return, Luminara created a dish that not only reflected the diner's mood but also embodied her extraordinary journey. This dish transformed The Enchanted Pot into more than just a restaurant; it became a gateway to culinary wonders, etching Luminara's story into Gastropolis's rich culinary history.",
+      "id": "1_sum_1",
+      "do_inference": true,
+      "inst": "Write a short summary based on the initially provided content. Do not include any further explanations or extra output in your response."
+    },
+    {
+      "user": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology).",
+      "sys": "(Luminara, work for, The Enchanted Pot), (The Enchanted Pot, located in, Gastropolis), (Luminara, live in, Gastropolis)",
+      "id": "1_rel_1",
+      "do_inference": true,
+      "inst": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology)."
+    },
+    {
+      "user": "List all the persons and places in the initially provided content. Your answers should be separated by commas and formatted as 'Person: ..., ...; Places: ..., ...'.",
+      "sys": "Person: Luminara; Places: Gastropolis, The Enchanted Pot, Whispering Woods, Mount Savor.",
+      "id": "1_ner_1",
+      "do_inference": true,
+      "inst": "List all the persons and places in the initially provided content. Your answers should be separated by commas and formatted as 'Person: ..., ...; Places: ..., ...'."
+    },
+    {
+      "user": "List all the adjectives in the initially provided content. Your answers should be separated by commas. Do not include any further explanations or extra output in your response.",
+      "sys": "bustling, aromatic, sizzling, hidden, adventurous, culinary, traditional, rare, magical, signature, whimsical, crisp, mysterious, emerald, legendary, elusive, true, trusty, talking, Whispering, shimmering, enchanting, Savor, luminescent, respectful, majestic, hopeful, stained, extraordinary, transported, icy, warm, rich, imaginative",
+      "id": "1_pos_1",
+      "do_inference": true,
+      "inst": "List all the adjectives in the initially provided content. Your answers should be separated by commas. Do not include any further explanations or extra output in your response."
+    },
+    {
+      "user": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output.",
+      "sys": "food",
+      "id": "1_cls_1",
+      "do_inference": true,
+      "inst": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output."
+    },
+    {
+      "user": "Content: Yesterday, Lumina City witnessed the spectacular conclusion of the first-ever Hoverball World Championship, a sport that has captured the imagination of millions worldwide. Hoverball, a game that combines elements of basketball, soccer, and advanced hover technology, was introduced just five years ago by the innovative sports scientist Dr. Elara Miro.\n\nThe championship match, held in the stunning, gravity-defying Lumina Arena, was between the Solar Flares and the Nebula Knights. The arena, known for its floating platforms and dynamic environment, provided an extraordinary backdrop for the event. Spectators watched in awe as players maneuvered on hoverboards, defying gravity and showcasing incredible athleticism.\n\nKey players in the match included Jaxon \"Lightning\" Vega of the Solar Flares, known for his rapid movements and precision shooting, and Nebula Knights' captain Lyra \"Meteor\" Kael, famed for her strategic plays and unmatched defense. The game was a breathtaking display of skill, strategy, and futuristic technology.\n\nThe first half saw the Solar Flares taking a narrow lead, with Vega's incredible mid-air acrobatics earning them crucial points. However, the Nebula Knights made a stunning comeback in the second half, thanks to Kael's brilliant coordination and a game-changing gravity-defying goal.\n\nAs the final buzzer sounded, the score was tied, leading to an intense tie-breaker. In the end, it was Vega's daring last-minute goal that clinched victory for the Solar Flares. The crowd erupted in cheers as confetti rained down, and the Solar Flares lifted the gleaming Hoverball Trophy, designed by renowned sculptor Atlas Pyron.\n\nThe Hoverball World Championship not only marked a new chapter in sports history but also showcased the incredible potential of human innovation and spirit. Fans around the world are already eagerly anticipating next year's championship, as Hoverball continues to soar in popularity. \n\nInstruction: Write a short summary based on the initially provided content. Do not include any further explanations or extra output in your response.",
+      "sys": "The first Hoverball World Championship concluded spectacularly in Lumina City's Lumina Arena. This new sport, a fusion of basketball, soccer, and hover technology, was created by Dr. Elara Miro five years ago. The final match was between the Solar Flares and the Nebula Knights. Players like Jaxon \"Lightning\" Vega and Lyra \"Meteor\" Kael showcased their talents on hoverboards in the arena's unique, gravity-defying environment. The Solar Flares initially led, thanks to Vega's skills, but the Nebula Knights, led by Kael, made a strong comeback. The game, tied at the end of regular play, was won by Vega's last-minute goal, securing victory for the Solar Flares. The event, marked by high-level athleticism and technological innovation, has significantly increased Hoverball's global popularity, with fans eagerly awaiting next year's championship.",
+      "id": "2_sum_1",
+      "do_inference": true,
+      "inst": "Write a short summary based on the initially provided content. Do not include any further explanations or extra output in your response."
+    },
+    {
+      "user": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output.",
+      "sys": "sports",
+      "id": "2_cls_1",
+      "do_inference": true,
+      "inst": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output."
+    },
+    {
+      "user": "List all the noun and adjectives in the first paragraph of the initially provided content. Your answers should be separated by commas and formatted as 'Noun: ..., ...; Adjectives: ..., ...'.",
+      "sys": "Nouns: Yesterday, Lumina City, conclusion, Hoverball World Championship, sport, imagination, millions, game, elements, basketball, soccer, hover technology, Dr. Elara Miro; Adjectives: spectacular, first-ever, innovative.",
+      "id": "2_pos_1",
+      "do_inference": true,
+      "inst": "List all the noun and adjectives in the first paragraph of the initially provided content. Your answers should be separated by commas and formatted as 'Noun: ..., ...; Adjectives: ..., ...'."
+    },
+    {
+      "user": "Base on the initially provided content, answer the question: Who scored the daring last-minute goal in the Hoverball World Championship final, leading the Solar Flares to victory?",
+      "sys": "Jaxon \"Lightning\" Vega",
+      "id": "2_short-qa_1",
+      "do_inference": true,
+      "inst": "Base on the initially provided content, answer the question: Who scored the daring last-minute goal in the Hoverball World Championship final, leading the Solar Flares to victory?"
+    },
+    {
+      "user": "List all the people in the initially provided content. Your answers should be separated by commas. Do not include any further explanations or extra output in your response.",
+      "sys": "Dr. Elara Miro, Jaxon 'Lightning' Vega, Lyra 'Meteor' Kael, Atlas Pyron",
+      "id": "2_ner_1",
+      "do_inference": true,
+      "inst": "List all the people in the initially provided content. Your answers should be separated by commas. Do not include any further explanations or extra output in your response."
+    },
+    {
+      "user": "Translate the second paragraph to Chinese. Just provide the translation directly without any further explanations or extra output.",
+      "sys": "这场冠军赛在令人惊叹的、充满挑战重力的露米纳竞技场举行，比赛是由太阳耀斑队和星云骑士队进行的。这个竞技场以其漂浮的平台和动态环境而著名，为比赛提供了非凡的背景。观众们惊叹地观看着运动员们在悬浮板上操作，挑战重力，展示了令人难以置信的运动能力。",
+      "id": "2_trans_1",
+      "do_inference": true,
+      "inst": "Translate the second paragraph to Chinese. Just provide the translation directly without any further explanations or extra output."
+    },
+    {
+      "user": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially provided content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology).",
+      "sys": "(Dr. Elara Miro, work for, Hoverball), (Lumina City, located in, Lumina Arena), (Jaxon 'Lightning' Vega, work for, Solar Flares), (Lyra 'Meteor' Kael, work for, Nebula Knights), (Solar Flares, based in, Lumina Arena), (Nebula Knights, based in, Lumina Arena), (Atlas Pyron, work for, Hoverball Trophy), (Jaxon 'Lightning' Vega, live in, Lumina City), (Lyra 'Meteor' Kael, live in, Lumina City)",
+      "id": "2_rel_1",
+      "do_inference": true,
+      "inst": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially provided content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology)."
+    },
+    {
+      "user": "Content: This Harmony Accord, established in the Year of the Singing Comet, on the 23rd day of Harmonia, in the fantastical land of New Melodica, seeks to regulate and protect the unique musical heritage and the rights of musicians, composers, and musical entities in the realm.\n\n1. **Scope and Purpose**: This Accord governs the creation, performance, and distribution of music within the boundaries of New Melodica. It aims to foster a vibrant musical ecosystem, protect the rights of creators, and ensure fair use of musical works.\n\n2. **Rights of Creators**: Every musician, composer, or musical entity, identified henceforth as 'Creator', holds the exclusive right to their compositions. These include melodies generated by the mythical Echotree leaves and the rhythms of the ancient Drummoss.\n\n3. **Performance Rights**: Public performances of any musical piece require the express consent of the Creator or their designated representative. This clause excludes performances during the Festival of Echoes, where music is freely shared in the spirit of communal harmony.\n\n4. **Magical and Technological Reproduction**: The use of magical instruments like the Echoflute or technological devices like the Soundweaver for replicating music must be authorized by the Creator. Unauthorized duplication is subject to penalties under New Melodican law.\n\n5. **Distribution and Royalties**: Creators are entitled to fair compensation for the use of their works. This includes magical transmissions, physical recordings in the form of Sound Crystals, and live performances.\n\n6. **Heritage Preservation**: The Council of Harmonic Wisdom shall oversee the preservation of ancient and significant musical traditions, including the songs of the Whispering Winds and the Symphony of the Starry Skies.\n\n7. **Resolution of Disputes**: Disputes arising under this Accord shall be resolved by the Melodic Tribunal, which consists of representatives from various musical guilds and the Council of Harmonic Wisdom.\n\n8. **Amendments**: This Accord may be amended with the unanimous consent of the Council of Harmonic Wisdom, provided that such amendments do not compromise the core principles of musical creativity and heritage.\n\nIn witness whereof, the representatives of the musical guilds of New Melodica and the Council of Harmonic Wisdom have set their hands and seals, in the presence of the Great Conductor, on this day and year first above written.\n\nInstruction: Write a short summary based on the initially provided content. Do not include any further explanations or extra output in your response.",
+      "sys": "The Harmony Accord in New Melodica regulates and protects the realm's musical heritage and rights of creators. It covers music creation, performance, and distribution, granting exclusive rights to composers and musicians over their works. Public performances require creators' consent, except during specific festivals. Use of magical or technological devices for music replication also requires authorization. Creators are entitled to fair compensation for their works' use. A council oversees the preservation of ancient music, and a tribunal resolves disputes. Amendments to the Accord can be made by the Council, maintaining the core principles of musical creativity and heritage.",
+      "id": "3_sum_1",
+      "do_inference": true,
+      "inst": "Write a short summary based on the initially provided content. Do not include any further explanations or extra output in your response."
+    },
+    {
+      "user": "List all the nouns in the second paragraph of the initially provided content. Your answers should be separated by commas. Do not include any further explanations or extra output in your response.",
+      "sys": "Accord, creation, performance, distribution, music, boundaries, New Melodica, ecosystem, rights, creators, use, works.",
+      "id": "3_pos_1",
+      "do_inference": true,
+      "inst": "List all the nouns in the second paragraph of the initially provided content. Your answers should be separated by commas. Do not include any further explanations or extra output in your response."
+    },
+    {
+      "user": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output.",
+      "sys": "music",
+      "id": "3_cls_1",
+      "do_inference": true,
+      "inst": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output."
+    },
+    {
+      "user": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology).",
+      "sys": "(Musical guilds of New Melodica, based in, New Melodica), (Council of Harmonic Wisdom, based in, New Melodica), (Great Conductor, works for, musical guilds of New Melodica and Council of Harmonic Wisdom), (Melodic Tribunal, located in, New Melodica), (Council of Harmonic Wisdom, works for, New Melodica), (Musicians, live in, New Melodica), (Composers, live in, New Melodica), (Musical entities, live in, New Melodica).",
+      "id": "3_rel_1",
+      "do_inference": true,
+      "inst": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology)."
+    },
+    {
+      "user": "Base on the initially provided content, answer the question: What are the conditions under which public performances of musical pieces do not require the express consent of the Creator in New Melodica?",
+      "sys": "During the Festival of Echoes.",
+      "id": "3_short-qa_1",
+      "do_inference": true,
+      "inst": "Base on the initially provided content, answer the question: What are the conditions under which public performances of musical pieces do not require the express consent of the Creator in New Melodica?"
+    },
+    {
+      "user": "List all the persons and organizations in the initially provided content. Your answers should be separated by commas and formatted as 'Person: ..., ...; Organization: ..., ...'.",
+      "sys": "Person: Great Conductor; Organization: Council of Harmonic Wisdom, Melodic Tribunal, musical guilds of New Melodica.",
+      "id": "3_ner_1",
+      "do_inference": true,
+      "inst": "List all the persons and organizations in the initially provided content. Your answers should be separated by commas and formatted as 'Person: ..., ...; Organization: ..., ...'."
+    },
+    {
+      "user": "Translate the fifth paragraph (**Magical and Technological Reproduction**) to Chinese. Just provide the translation directly without any further explanations or extra output.",
+      "sys": "魔法与技术复制：使用魔法乐器如回音长笛或技术设备如声音编织者复制音乐必须得到创作者的授权。未经授权的复制将受到新旋律国法律的处罚。",
+      "id": "3_trans_1",
+      "do_inference": true,
+      "inst": "Translate the fifth paragraph (**Magical and Technological Reproduction**) to Chinese. Just provide the translation directly without any further explanations or extra output."
+    },
+    {
+      "user": "Content: In a groundbreaking development that feels like it’s straight out of a science fiction novel, Dr. Elara Mivon and her team at the futuristic Helios Medical Center in the sky city of Stratonimbus have announced the successful creation of the \"Cure-All\" Nanobot. This revolutionary medical technology promises to treat a wide range of diseases, from common colds to chronic illnesses, effectively rewriting the rules of modern medicine.\n\nThe \"Cure-All\" Nanobot, a microscopic robot barely the size of a dust particle, operates by entering the human body and identifying illness-causing agents. Once detected, it utilizes a combination of advanced AI algorithms and a compact molecular toolkit to neutralize these agents. Remarkably, these nanobots can adapt to various bodily environments, making them effective against a vast array of diseases.\n\nDr. Mivon, a renowned bioengineer and AI specialist, unveiled this innovation at the annual Global Health Symposium held in the floating gardens of Stratonimbus. \"Our goal was always to revolutionize healthcare,\" Dr. Mivon stated. \"We aimed to create a solution that is both universally accessible and exceptionally effective. With the 'Cure-All' Nanobot, we are a step closer to a world where illness is a relic of the past.\"\n\nThe nanobots are tailored to individual patients at Helios Medical Center, using a process that involves scanning the patient’s DNA and developing a personalized treatment plan. This customization ensures that each treatment is as effective as possible, with minimal side effects.\n\nThe potential implications of this technology are vast. It could not only eradicate existing diseases but also preemptively address new illnesses. However, ethical and logistical concerns remain, particularly regarding the affordability and accessibility of such advanced treatment.\n\nAs the world watches in awe, the \"Cure-All\" Nanobot stands as a beacon of hope and a testament to the boundless possibilities of human ingenuity in the realm of medicine. While its full impact remains to be seen, this innovation marks a monumental step forward in our quest for a healthier future.\n\nInstruction: Write a short summary based on the initially provided content.",
+      "sys": "In a remarkable advancement at the Helios Medical Center in Stratonimbus, Dr. Elara Mivon's team has created the \"Cure-All\" Nanobot, a microscopic robot designed to treat a wide range of diseases. This nanotechnology operates by entering the human body, detecting illness-causing agents, and neutralizing them using AI algorithms and a molecular toolkit. Dr. Mivon, a bioengineer and AI expert, announced this innovation at the Global Health Symposium in Stratonimbus. The nanobots, tailored to individual patients through DNA scanning, promise minimal side effects and a major step towards eradicating illnesses. Despite its potential, there are concerns about the affordability and accessibility of this advanced treatment. This development represents a significant leap in medical technology, offering a hopeful future in healthcare.",
+      "id": "4_sum_1",
+      "do_inference": true,
+      "inst": "Write a short summary based on the initially provided content."
+    },
+    {
+      "user": "Translate the last paragraph to Chinese. Just provide the translation directly without any further explanations or extra output.",
+      "sys": "随着世界惊叹地观望，'万能' 纳米机器人成为希望的灯塔，也是人类在医学领域无限创造力的见证。虽然它的全部影响尚待观察，但这一创新标志着我们追求更健康未来的重大步伐。",
+      "id": "4_trans_1",
+      "do_inference": true,
+      "inst": "Translate the last paragraph to Chinese. Just provide the translation directly without any further explanations or extra output."
+    },
+    {
+      "user": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output.",
+      "sys": "medicine",
+      "id": "4_cls_1",
+      "do_inference": true,
+      "inst": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output."
+    },
+    {
+      "user": "List all the locations in the initially provided content. Your answers should be separated by commas.",
+      "sys": "Helios Medical Center, sky city of Stratonimbus, floating gardens of Stratonimbus, annual Global Health Symposium",
+      "id": "4_ner_1",
+      "do_inference": true,
+      "inst": "List all the locations in the initially provided content. Your answers should be separated by commas."
+    },
+    {
+      "user": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology).",
+      "sys": "(Dr. Elara Mivon, work for, Helios Medical Center), (Helios Medical Center, located in, Stratonimbus), (Dr. Elara Mivon, work for, Global Health Symposium), (Global Health Symposium, located in, Stratonimbus)",
+      "id": "4_rel_1",
+      "do_inference": true,
+      "inst": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology)."
+    },
+    {
+      "user": "List all the adverbs and adjectives in the first paragraph of the initially provided content. Your answers should be separated by commas and formatted as 'Adverbs: ..., ...; Adjectives: ..., ...'.",
+      "sys": "Adverbs: effectively; Adjectives: groundbreaking, straight, successful, wide, common, chronic, modern, microscopic, human, illness-causing, advanced, compact, various, vast, renowned, annual, floating, universal, exceptionally, individual, personalized, minimal, existing, new, ethical, logistical, advanced, full, monumental, healthier.",
+      "id": "4_pos_1",
+      "do_inference": true,
+      "inst": "List all the adverbs and adjectives in the first paragraph of the initially provided content. Your answers should be separated by commas and formatted as 'Adverbs: ..., ...; Adjectives: ..., ...'."
+    },
+    {
+      "user": "Base on the initially provided content, answer the question: Where was the \"Cure-All\" Nanobot unveiled by Dr. Elara Mivon?",
+      "sys": "Annual Global Health Symposium.",
+      "id": "4_short-qa_1",
+      "do_inference": true,
+      "inst": "Base on the initially provided content, answer the question: Where was the \"Cure-All\" Nanobot unveiled by Dr. Elara Mivon?"
+    },
+    {
+      "user": "Content: Nestled in a forgotten corner of the world lies Aralia, a land of enchanting forests and whispering trees, where every leaf tells a story. My journey to the Whispering Woods of Aralia was an expedition into a realm of fantasy and wonder.\n\nUpon entering Aralia, the air felt alive with magic. The trees, towering and ancient, had bark that shimmered in hues of emerald and gold. My guide, a sprightly creature named Faelan, resembled a human but with delicate features and ears pointed like the tip of a willow leaf. He led me through the winding paths, where the flora seemed to dance and sway to an inaudible rhythm.\n\nOur first stop was the Crystal Clearing, a glade where the trees formed a natural dome. Here, the leaves whispered old tales of travelers and heroes from times long past. Faelan explained that the trees in Aralia were sentient, guardians of the land's history and lore.\n\nThe highlight of the trip was the Moonlit Banquet, hosted by the Aralians on the night of the full moon. Under the silver glow, the forest came to life in a different light, with luminescent flowers and lanterns hung from the branches. The Aralians celebrated with music from instruments that seemed to be crafted from the very essence of the forest, producing melodies that resonated deep within the soul.\n\nOn the final day, Faelan showed me the Mirror Lake, a body of water so still and clear it reflected the world with surreal perfection. It was said that the lake held the power to reveal one's true self.\n\nLeaving Aralia, I felt enriched with tales and experiences that seemed like they belonged in a fairytale. The Whispering Woods of Aralia, a mystical place where nature spoke and stories lived, left an indelible mark on my heart and imagination.\n\nInstruction: Base on the initially provided content, answer the question: What is the name of the guide in the Whispering Woods of Aralia?",
+      "sys": "Faelan.",
+      "id": "5_short-qa_1",
+      "do_inference": true,
+      "inst": "Base on the initially provided content, answer the question: What is the name of the guide in the Whispering Woods of Aralia?"
+    },
+    {
+      "user": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output.",
+      "sys": "travel",
+      "id": "5_cls_1",
+      "do_inference": true,
+      "inst": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output."
+    },
+    {
+      "user": "Translate the second paragraph to Chinese. Just provide the translation directly without any further explanations or extra output.",
+      "sys": "在进入阿拉利亚时，空气中仿佛充满了魔法。高耸而古老的树木，树皮在翠绿和金色的光芒中闪烁。我的向导，一位名叫法兰的灵巧生物，看起来像人类，但面容精致，耳朵尖锐如柳叶之尖。他带领我穿过蜿蜒的小径，那里的植物似乎在跳舞，随着一种听不见的节奏摆动。",
+      "id": "5_trans_1",
+      "do_inference": true,
+      "inst": "Translate the second paragraph to Chinese. Just provide the translation directly without any further explanations or extra output."
+    },
+    {
+      "user": "List all the adverbs in the initially provided content. Your answers should be separated by commas.",
+      "sys": "enchantingly, whisperingly, anciently, sprightly, pointedly, windingly, naturally, historically, lorely, highlightly, moonlily, differently, luminescently, musically, resonantly, finally, stillly, clearly, surreally, powerfully, truly, enrichedly, indelibly.",
+      "id": "5_pos_1",
+      "do_inference": true,
+      "inst": "List all the adverbs in the initially provided content. Your answers should be separated by commas."
+    },
+    {
+      "user": "List all the persons and places in the initially provided content. Your answers should be separated by commas and formatted as 'Person: ..., ...; Place: ..., ...'.",
+      "sys": "Person: Faelan; Place: Aralia, Whispering Woods of Aralia, Crystal Clearing, Moonlit Banquet, Mirror Lake.",
+      "id": "5_ner_1",
+      "do_inference": true,
+      "inst": "List all the persons and places in the initially provided content. Your answers should be separated by commas and formatted as 'Person: ..., ...; Place: ..., ...'."
+    },
+    {
+      "user": "Write a short summary based on the initially provided content.",
+      "sys": "Aralia is a hidden and magical land filled with enchanting forests and ancient trees that seem to whisper stories of the past. The journey to the Whispering Woods of Aralia is a fantastical expedition filled with wonder and enchantment. Guided by a sprightly creature named Faelan, the visitor explores the Crystal Clearing, where sentient trees share tales of travelers and heroes. The highlight of the trip is the Moonlit Banquet, a celebration under the full moon with luminescent flora and enchanting music. Finally, the Mirror Lake holds the power to reveal one's true self. Leaving Aralia, the visitor is forever changed by the mystical place where nature speaks and stories come to life.",
+      "id": "5_sum_1",
+      "do_inference": true,
+      "inst": "Write a short summary based on the initially provided content."
+    },
+    {
+      "user": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology).",
+      "sys": "(Faelan, live in, Aralia), (Aralians, live in, Aralia)",
+      "id": "5_rel_1",
+      "do_inference": true,
+      "inst": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology)."
+    },
+    {
+      "user": "Content: In a world parallel to ours, where history took an uncharted course, lies the legendary Kingdom of Zaloria. This imaginative realm, nestled between the towering Emerald Cliffs and the mysterious Whispering Woods, is a testament to human creativity and the power of myth.\n\n**Zaloria: A Kingdom Born from the Stars**\n\nZaloria’s tale begins with its founder, Queen Aralia, who, legend says, descended from the stars. With her came the mystical Amaranthine Stone, a gem that glowed with the light of a thousand suns and held the power to harness the elements. Under her rule, Zaloria thrived, becoming a melting pot of cultures, ideas, and magic.\n\n**Architectural Marvels and Wondrous Inventions**\n\nThe kingdom was renowned for its architectural marvels. The Skyward Spires, tall towers touching the clouds, were built by the ingenious architect, Icaron. The Great Library of Zaloria, a repository of universal knowledge, was home to the Clockwork Owl, an invention that could answer any question posed to it.\n\n**Festivals and Traditions**\n\nZalorians celebrated the annual Festival of the Silver Moon, where the night sky lit up with a thousand lanterns, symbolizing the stars from which their queen came. The Day of Echoes was another significant event, where every citizen whispered their dreams into the Whispering Woods, believing them to carry their hopes to the heavens.\n\n**The Disappearance**\n\nBut, as with all great tales, tragedy struck. One fateful night, under a crimson moon, Queen Aralia and the Amaranthine Stone vanished, leaving behind a kingdom shrouded in mystery. Some say she returned to the stars; others believe she sleeps within the Whispering Woods, guarding the kingdom’s secrets.\n\n**Zaloria Today**\n\nToday, the Lost Kingdom of Zaloria lives on in whispers and campfire tales. Adventurers seek the Amaranthine Stone, historians debate the truths of its existence, and dreamers imagine the wonders that once were. Zaloria, a testament to the boundless realms of imagination, continues to inspire and mystify, a legendary kingdom etched in the annals of a history that never was.\n\nInstruction: List all the nouns and verbs in the last paragraph of the initially provided content. Your answers should be separated by commas and formatted as 'Nouns: ..., ...; Verbs: ..., ...'.",
+      "sys": "Nouns: Kingdom, Zaloria, whispers, campfire tales, Adventurers, Amaranthine Stone, historians, truths, existence, dreamers, wonders, testament, realms, imagination, kingdom, annals, history; Verbs: lives, seek, debate, imagine, continues, inspire, mystify, etched",
+      "id": "6_pos_1",
+      "do_inference": true,
+      "inst": "List all the nouns and verbs in the last paragraph of the initially provided content. Your answers should be separated by commas and formatted as 'Nouns: ..., ...; Verbs: ..., ...'."
+    },
+    {
+      "user": "Translate the fourth paragraph to Chinese. Just provide the translation directly without any further explanations or extra output.",
+      "sys": "扎洛里亚人庆祝一年一度的银月节，在这个节日里，夜空被成千上万的灯笼点亮，象征着他们的女王来自的星星。回声日也是另一个重要的活动，在这一天，每位公民都会向低语森林耳语他们的梦想，相信这些梦想会将他们的希望带到天堂。",
+      "id": "6_trans_1",
+      "do_inference": true,
+      "inst": "Translate the fourth paragraph to Chinese. Just provide the translation directly without any further explanations or extra output."
+    },
+    {
+      "user": "List all the places in the initially provided content. Your answers should be separated by commas.",
+      "sys": "Emerald Cliffs, Whispering Woods, Kingdom of Zaloria, Skyward Spires, Great Library of Zaloria.",
+      "id": "6_ner_1",
+      "do_inference": true,
+      "inst": "List all the places in the initially provided content. Your answers should be separated by commas."
+    },
+    {
+      "user": "Base on the initially provided content, answer the question: What invention in the Great Library of Zaloria could answer any question posed to it?",
+      "sys": "Clockwork Owl",
+      "id": "6_short-qa_1",
+      "do_inference": true,
+      "inst": "Base on the initially provided content, answer the question: What invention in the Great Library of Zaloria could answer any question posed to it?"
+    },
+    {
+      "user": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output.",
+      "sys": "history",
+      "id": "6_cls_1",
+      "do_inference": true,
+      "inst": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output."
+    },
+    {
+      "user": "Write a short summary based on the initially provided content.",
+      "sys": "The Kingdom of Zaloria is a mythical realm from an alternate history, famous for its blend of magic, culture, and technological marvels. Founded by Queen Aralia, who is said to have descended from the stars with the powerful Amaranthine Stone, Zaloria became a center of innovation and diversity. Notable landmarks include the Skyward Spires and the Great Library with its Clockwork Owl. Celebrations like the Festival of the Silver Moon and the Day of Echoes reflect the kingdom's rich traditions. However, the mysterious disappearance of Queen Aralia and the Amaranthine Stone under a crimson moon left Zaloria shrouded in secrets. Today, it remains a source of fascination for adventurers, historians, and dreamers, enduring as a symbol of the limitless potential of human imagination and storytelling.",
+      "id": "6_sum_1",
+      "do_inference": true,
+      "inst": "Write a short summary based on the initially provided content."
+    },
+    {
+      "user": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology).",
+      "sys": "(Queen Aralia, based in, Kingdom of Zaloria), (Queen Aralia, live in, Kingdom of Zaloria), (Amaranthine Stone, located in, Kingdom of Zaloria), (Skyward Spires, located in, Kingdom of Zaloria), (Icaron, work for, Kingdom of Zaloria), (Great Library of Zaloria, located in, Kingdom of Zaloria), (Clockwork Owl, located in, Great Library of Zaloria)",
+      "id": "6_rel_1",
+      "do_inference": true,
+      "inst": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology)."
+    },
+    {
+      "user": "Content: Dear Dr. Elara Thorne,\n\nI hope this message finds you in good health. I am reaching out to discuss the ethical implications surrounding our newest endeavor at Orion Innovations - the MindWeaver. Your expertise in the realm of technology ethics is essential for guiding our strategy in this groundbreaking project.\n\nAs you are aware, the MindWeaver represents a significant leap in neuro-interactive technology, enabling users to interface with digital environments using their cognitive processes. This advancement, while promising, introduces several ethical challenges, particularly in the areas of user consent, data privacy, and the risk of misuse.\n\nOur primary concern revolves around consent and privacy. The MindWeaver's ability to read and interpret neural patterns could potentially lead to unintentional sharing of private thoughts or information. It is crucial that we establish a clear and transparent consent framework that fully informs users about the nature of the data being accessed and its intended use.\n\nAdditionally, the potential for misuse of the MindWeaver is a pressing issue. In the wrong hands, the technology could be exploited for unauthorized surveillance or manipulation of thoughts, posing a serious threat to individual privacy and autonomy. Implementing stringent security measures to prevent such abuses is imperative to ensure the technology is used in a manner that respects and preserves mental privacy.\n\nFurthermore, we must address the societal impact of the MindWeaver. The unequal access to this technology could exacerbate existing social inequalities, creating a divide between those who have access and those who do not. It is important to consider strategies that democratize access to the MindWeaver, ensuring its benefits are accessible to a diverse and wide-ranging user base.\n\nI propose we arrange a comprehensive meeting to delve deeper into these concerns. Your insights as an experienced ethicist will be invaluable in helping us chart an ethical course for the development and deployment of the MindWeaver. I am confident that together, we can ensure the technology is not only innovative but also ethically and socially responsible.\n\nI look forward to hearing your thoughts and scheduling a suitable time for our meeting at the Orion Innovations office in Neo-Tokyo.\n\nWarm regards,\n\nDr. Kaelen Murakami\nDirector of Innovation, Orion Innovations\n\nInstruction: Translate the first paragraph to Chinese. Just provide the translation directly without any further explanations or extra output.",
+      "sys": "亲爱的伊拉拉·索恩博士，\n\n我希望这条信息能在您安康的时候找到您。我正在联系讨论奥赖恩创新公司最新事业——心灵编织者的伦理影响。您在技术伦理领域的专业知识对于指导我们在这一开创性项目中的策略至关重要。",
+      "id": "7_trans_1",
+      "do_inference": true,
+      "inst": "Translate the first paragraph to Chinese. Just provide the translation directly without any further explanations or extra output."
+    },
+    {
+      "user": "Base on the initially provided content, answer the question: What specific function of the MindWeaver raises concerns about unintentional sharing of private information?",
+      "sys": "Reading and interpreting neural patterns.",
+      "id": "7_short-qa_1",
+      "do_inference": true,
+      "inst": "Base on the initially provided content, answer the question: What specific function of the MindWeaver raises concerns about unintentional sharing of private information?"
+    },
+    {
+      "user": "Write a short summary based on the initially provided content.",
+      "sys": "Dr. Kaelen Murakami from Orion Innovations has written to Dr. Elara Thorne to discuss the ethical implications of their new project, the MindWeaver. This advanced neuro-interactive technology allows users to interface with digital environments using their thoughts, raising concerns about user consent, data privacy, and potential misuse. Murakami emphasizes the need for a clear consent framework to prevent unintentional sharing of private information and highlights the risk of the technology being used for unauthorized surveillance or thought manipulation. The letter also addresses the societal impact of the MindWeaver, particularly the potential for exacerbating social inequalities due to unequal access. Murakami proposes a comprehensive meeting to discuss these issues with Dr. Thorne, valuing her expertise in technology ethics, to ensure the technology is developed and deployed responsibly.",
+      "id": "7_sum_1",
+      "do_inference": true,
+      "inst": "Write a short summary based on the initially provided content."
+    },
+    {
+      "user": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output.",
+      "sys": "ethics",
+      "id": "7_cls_1",
+      "do_inference": true,
+      "inst": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output."
+    },
+    {
+      "user": "List all the adjectives and nouns in the first paragraph initially provided content. Your answers should be separated by commas and formatted as 'Adjectives: ..., ...; Nouns: ..., ...'.\n",
+      "sys": "Adjectives: good, newest, ethical, groundbreaking; Nouns: health, message, implications, endeavor, Orion Innovations, MindWeaver, expertise, realm, technology, ethics, strategy, project.",
+      "id": "7_ner_1",
+      "do_inference": true,
+      "inst": "List all the adjectives and nouns in the first paragraph initially provided content. Your answers should be separated by commas and formatted as 'Adjectives: ..., ...; Nouns: ..., ...'.\n"
+    },
+    {
+      "user": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology).",
+      "sys": "(Dr. Elara Thorne, work for, Orion Innovations), (Dr. Kaelen Murakami, work for, Orion Innovations), (Orion Innovations, located in, Neo-Tokyo)",
+      "id": "7_rel_1",
+      "do_inference": true,
+      "inst": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology)."
+    },
+    {
+      "user": "List all the adverbs and verbs in the third paragraph of the initially provided content. Your answers should be separated by commas and formatted as 'Adverbs: ..., ...; Verbs: ..., ...'.",
+      "sys": "Adverbs: potentially, unintentionally; Verbs: revolves, read, interpret, lead, sharing, establish, informs, being accessed, intended.",
+      "id": "7_pos_1",
+      "do_inference": true,
+      "inst": "List all the adverbs and verbs in the third paragraph of the initially provided content. Your answers should be separated by commas and formatted as 'Adverbs: ..., ...; Verbs: ..., ...'."
+    },
+    {
+      "user": "Content: In the heart of the bustling city of Luminar, where buildings spiraled into the sky like giant metallic trees, lay the most extraordinary school ever built - The Clockwork Classroom. This was not an ordinary school; its walls were made of shimmering glass, and gears and cogs whirred behind them, powering the entire establishment. \n\nChapter 7: \"The Lesson of the Timeless Trees\"\n\nThe chapter begins in the glowing, glass-encased botanical lab where Professor Elara, a sprightly woman with holographic glasses, greeted her students. Today's lesson was about the Timeless Trees, mythical plants that were said to exist in parallel dimensions. The students, a diverse group of eager young minds, gathered around the Holo-Projector, a device capable of displaying images from different realms.\n\nAs Elara activated the projector, the room filled with the luminous, ethereal images of the Timeless Trees. Their leaves shimmered in colors that didn't exist in the normal spectrum, and their branches moved gracefully, as if underwater. The students were mesmerized.\n\nSuddenly, the projector glitched, and a real Timeless Tree sapling, small and glowing, appeared in the middle of the lab. The class gasped in amazement. This was their chance to study something truly otherworldly.\n\nUnder Elara's guidance, the students used ChronoScopes, special tools that could observe and interact with objects from different times and dimensions. They discovered that the sapling's growth was influenced not by water or sunlight, but by the emotions and thoughts around it.\n\nAs the lesson concluded, Elara reminded her students of the importance of understanding and respecting the mysteries of the universe. The Timeless Tree sapling, now a permanent resident of the lab, stood as a symbol of their boundless curiosity and the wonders that lay beyond their world.\n\nThe chapter closes as the students, filled with new knowledge and awe, filed out of the botanical lab, their minds racing with possibilities. The Clockwork Classroom, once again, had opened a door to the unknown.\n\nInstruction: Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output.",
+      "sys": "education",
+      "id": "8_cls_1",
+      "do_inference": true,
+      "inst": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output."
+    },
+    {
+      "user": "List all the adjectives and verbs in the first paragraph initially provided content. Your answers should be separated by commas and formatted as 'Adjectives: ..., ...; Verbs: ..., ...'.\n",
+      "sys": "Answers: Adjectives: bustling, giant, metallic, extraordinary, ordinary, shimmering, entire; Verbs: spiraled, lay, built, were, made, whirred, powering ",
+      "id": "8_pos_1",
+      "do_inference": true,
+      "inst": "List all the adjectives and verbs in the first paragraph initially provided content. Your answers should be separated by commas and formatted as 'Adjectives: ..., ...; Verbs: ..., ...'.\n"
+    },
+    {
+      "user": "Translate the second paragraph to Chinese. Just provide the translation directly without any further explanations or extra output.",
+      "sys": "第七章：“永恒之树的课程”\n\n章节开始于闪闪发光的、由玻璃包围的植物实验室，其中活泼的埃拉拉教授戴着全息眼镜迎接她的学生。今天的课程是关于永恒之树，这些传说中的植物据说存在于平行维度中。一群热切的年轻学生，他们多样化的思维聚集在全息投影仪旁，这是一种能够显示来自不同领域图像的设备。",
+      "id": "8_trans_1",
+      "do_inference": true,
+      "inst": "Translate the second paragraph to Chinese. Just provide the translation directly without any further explanations or extra output."
+    },
+    {
+      "user": "List all the persons and places in the initially provided content. Your answers should be separated by commas and formatted as 'Person: ..., ...; Place: ..., ...'.",
+      "sys": "Person: Professor Elara, students; Place: Luminar, The Clockwork Classroom, botanical lab.",
+      "id": "8_ner_1",
+      "do_inference": true,
+      "inst": "List all the persons and places in the initially provided content. Your answers should be separated by commas and formatted as 'Person: ..., ...; Place: ..., ...'."
+    },
+    {
+      "user": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology).",
+      "sys": "(Professor Elara, work for, The Clockwork Classroom), (Students, located in, botanical lab), (botanical lab, located in, The Clockwork Classroom), (The Clockwork Classroom, located in, Luminar)",
+      "id": "8_rel_1",
+      "do_inference": true,
+      "inst": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology)."
+    },
+    {
+      "user": "Write a short summary based on the initially provided content.",
+      "sys": "In Chapter 7 of the story set in The Clockwork Classroom, a unique school in the city of Luminar, Professor Elara introduces her students to the mythical Timeless Trees in a glass-encased botanical lab. Using a Holo-Projector that displays images from other realms, the lesson takes an extraordinary turn when a real Timeless Tree sapling appears in the lab due to a glitch in the projector. The students, guided by Elara and using special ChronoScopes, learn that the sapling grows in response to emotions and thoughts, not traditional elements like water or sunlight. This discovery emphasizes the importance of understanding and respecting the mysteries of the universe. The chapter ends with the students leaving the lab, inspired and awed by the possibilities that lie beyond their known world, with the Timeless Tree sapling remaining as a symbol of their unending curiosity.",
+      "id": "8_sum_1",
+      "do_inference": true,
+      "inst": "Write a short summary based on the initially provided content."
+    },
+    {
+      "user": "Base on the initially provided content, answer the question: What powers the Clockwork Classroom?",
+      "sys": "Gears, cogs.",
+      "id": "8_short-qa_1",
+      "do_inference": true,
+      "inst": "Base on the initially provided content, answer the question: What powers the Clockwork Classroom?"
+    },
+    {
+      "user": "Content: Nestled in a quaint corner of a vibrant city, where the mundane intertwines with the mystical, stands the Arcane Gallery. This unique establishment transcends the concept of a traditional art gallery, inviting guests into a realm where art transcends reality, stirring imagination and wonder.\n\nUpon entering through its mystical, ivy-covered gates, visitors are welcomed by the Gallery's ethereal curator, Seraphina, a being of light with eyes sparkling like sapphires. She guides you through a labyrinth of spellbinding chambers, each hosting masterpieces from the enchanted isles of Mythoria.\n\nThe first chamber, the Grove of Whispers, houses paintings of ancient, sentient trees whose leaves seem to whisper age-old tales and secrets of yore. Moving on, the Celestial Vista room mesmerizes with artworks that depict galaxies and nebulae, pulsating with the heartbeat of the universe.\n\nAt the heart of the gallery lies the Elemental Sculpture Court, an awe-inspiring atrium under a crystal-clear dome. Here, sculptures representing the primal elements of nature - earth, air, fire, and water - interact with their surroundings. A sculpture of a fire spirit emits a gentle warmth, while a water nymph's form shimmers and flows like a tranquil stream.\n\nThe gallery also caters to the creatively young at heart with the Wonder Workshop. This interactive zone allows visitors to craft their own masterpieces using magical brushes and paints that shift in hue and texture whimsically. The walls here are enchanted, displaying an ever-evolving tapestry of guest-created art.\n\nThe journey culminates at the Dusk Lounge, a peaceful haven where visitors can reflect on their experiences. Enjoying elixirs of moonlight and star-shaped confections, guests come to realize that the Arcane Gallery is more than a showcase of art; it's an ode to the limitless creativity inherent in each visitor.\n\nThe Arcane Gallery isn't just a place to view art; it's a portal to unlock the inner artist in everyone, making it an essential destination for those who seek inspiration infused with a touch of the mystical.\n\nInstruction: List all the person and places in the initially provided content. Your answers should be separated by commas and formatted as 'Person: ..., ...; Place: ..., ...'. ",
+      "sys": "Person: Seraphina; Place: Arcane Gallery, Grove of Whispers, Celestial Vista room, Elemental Sculpture Court, Wonder Workshop, Dusk Lounge",
+      "id": "9_ner_1",
+      "do_inference": true,
+      "inst": "List all the person and places in the initially provided content. Your answers should be separated by commas and formatted as 'Person: ..., ...; Place: ..., ...'. "
+    },
+    {
+      "user": "Base on the initially provided content, answer the question: In the Arcane Gallery, what element is represented by a sculpture that emits a gentle warmth?",
+      "sys": "Fire.",
+      "id": "9_short-qa_1",
+      "do_inference": true,
+      "inst": "Base on the initially provided content, answer the question: In the Arcane Gallery, what element is represented by a sculpture that emits a gentle warmth?"
+    },
+    {
+      "user": "List all the adverbs and verbs in the first paragraph of the initially provided content. Your answers should be separated by commas and formatted as 'Adverbs: ..., ...; Verbs: ..., ...'.",
+      "sys": "Adverbs: quaintly, vibrantly; Verbs: stands, transcends, inviting, stirs.",
+      "id": "9_pos_1",
+      "do_inference": true,
+      "inst": "List all the adverbs and verbs in the first paragraph of the initially provided content. Your answers should be separated by commas and formatted as 'Adverbs: ..., ...; Verbs: ..., ...'."
+    },
+    {
+      "user": "Write a short summary based on the initially provided content.",
+      "sys": "The Arcane Gallery, situated in a vibrant city, offers a unique and mystical art experience beyond a typical gallery. It's guided by Seraphina, an ethereal curator, and features various themed chambers. The Grove of Whispers displays paintings of sentient trees with whispering leaves. The Celestial Vista room showcases cosmic art, while the Elemental Sculpture Court presents interactive nature sculptures. Additionally, the Wonder Workshop allows visitors to create art with magical materials, and the experience concludes at the Dusk Lounge, where guests can reflect and enjoy themed treats. The gallery serves as a portal to awaken the inner artist in every visitor, blending art with the mystical.",
+      "id": "9_sum_1",
+      "do_inference": true,
+      "inst": "Write a short summary based on the initially provided content."
+    },
+    {
+      "user": "Translate the second last paragraph to Chinese. Just provide the translation directly without any further explanations or extra output.",
+      "sys": "旅程在黄昏休息室达到高潮，这是一个宁静的避风港，游客可以在这里反思他们的经历。在享受月光药水和星形糖果的同时，客人们意识到奥秘画廊不仅仅是艺术作品的展示场所；它是对每位参观者内在无限创造力的颂歌。",
+      "id": "9_trans_1",
+      "do_inference": true,
+      "inst": "Translate the second last paragraph to Chinese. Just provide the translation directly without any further explanations or extra output."
+    },
+    {
+      "user": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output.",
+      "sys": "art",
+      "id": "9_cls_1",
+      "do_inference": true,
+      "inst": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output."
+    },
+    {
+      "user": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology).",
+      "sys": "(Seraphina, work for, Arcane Gallery), (Arcane Gallery, located in, vibrant city)",
+      "id": "9_rel_1",
+      "do_inference": true,
+      "inst": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology)."
+    },
+    {
+      "user": "Content: **Abstract**\n\nThis paper discusses the discovery of Quantumis Ore in the Velorian jungles, a mineral with unique properties that enable gravitational manipulation. The interdisciplinary team, led by Dr. Kaelen Orion with key members Dr. Nyx Solaris and Dr. Aria Celestine, explores the scientific and ecological implications of this discovery. The study delves into the ore's potential in revolutionizing quantum computing, energy transmission, and its critical role in the unique ecology of Veloria.\n\n**Introduction**\n\nThe unexplored depths of Veloria have long been a subject of intrigue. In a recent expedition, a remarkable discovery was made - Quantumis Ore, a mineral exhibiting extraordinary gravitational properties. This paper presents an overview of the initial findings and the potential transformative impact of this discovery on various scientific fields.\n\n**Methodology**\n\nThe team conducted extensive field research in Veloria, employing advanced geological survey techniques and ecological assessments. Samples of Quantumis Ore were analyzed using quantum field analysis and ecological impact studies to understand their properties and interactions with the surrounding ecosystem.\n\n**Findings**\n\nQuantumis Ore demonstrates a unique helical structure and interacts with quantum fields in unprecedented ways. This interaction suggests possible applications in quantum computing and energy transmission. Ecologically, the ore influences the development of Veloria's gravity-resistant flora and fauna, indicating a deep symbiotic relationship within the ecosystem.\n\n**Discussion**\n\nThe implications of Quantumis Ore are manifold. In physics, it challenges existing theories of gravitational manipulation. In ecology, it presents a case of a mineral deeply intertwined with its environment, necessitating a reevaluation of resource extraction impacts. Ethically, the study addresses the balance between scientific exploration and ecological preservation.\n\n**Conclusion**\n\nQuantumis Ore's discovery is not merely a scientific milestone but also a reminder of the intricate connections between our technological pursuits and the natural world. It calls for a thoughtful approach to harnessing its potential, ensuring that scientific advancement does not come at the cost of ecological harmony.\n\nInstruction: Base on the initially provided content, answer the question: What is Quantumis Ore's main property?",
+      "sys": "Gravitational manipulation.",
+      "id": "10_short-qa_1",
+      "do_inference": true,
+      "inst": "Base on the initially provided content, answer the question: What is Quantumis Ore's main property?"
+    },
+    {
+      "user": "Translate the first paragraph to Chinese. Just provide the translation directly without any further explanations or extra output.",
+      "sys": "**摘要**\n\n本文讨论了在Velorian丛林发现的Quantumis矿石，这种矿石具有独特的属性，可以实现重力操控。由Dr. Kaelen Orion领导的跨学科团队，关键成员包括Dr. Nyx Solaris和Dr. Aria Celestine，探讨了这一发现的科学和生态学意义。研究深入探讨了该矿石在革命性量子计算、能量传输方面的潜力，以及其在Veloria独特生态中的关键作用。",
+      "id": "10_trans_1",
+      "do_inference": true,
+      "inst": "Translate the first paragraph to Chinese. Just provide the translation directly without any further explanations or extra output."
+    },
+    {
+      "user": "List all the persons and places in the initially provided content. Your answers should be separated by commas and formatted as 'Person: ..., ...; Place: ..., ...'.",
+      "sys": "Person: Dr. Kaelen Orion, Dr. Nyx Solaris, Dr. Aria Celestine; Place: Velorian jungles, Veloria.",
+      "id": "10_ner_1",
+      "do_inference": true,
+      "inst": "List all the persons and places in the initially provided content. Your answers should be separated by commas and formatted as 'Person: ..., ...; Place: ..., ...'."
+    },
+    {
+      "user": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology).",
+      "sys": "(Dr. Kaelen Orion, work for, interdisciplinary team), (Dr. Nyx Solaris, work for, interdisciplinary team), (Dr. Aria Celestine, work for, interdisciplinary team), (interdisciplinary team, located in, Velorian jungles)",
+      "id": "10_rel_1",
+      "do_inference": true,
+      "inst": "List all the relations of the types [based in, work for, located in, live in] among the entities [person, location, organization] in the initially given content. Just provide the relations that were explicitly stated in the context without any further explanations or extra output. Provide the relations in the format of (entity 1, relation, entity 2), (entity 1, relation, entity 2), .... For example: (Shi Liming, work for, Institute of Zoology)."
+    },
+    {
+      "user": "List all the adjectives and verbs in the first paragraph of the initially provided content. Your answers should be separated by commas and formatted as 'Adjectives: ..., ...; Verbs: ..., ...'.",
+      "sys": "Adjectives: unique, gravitational, scientific, ecological, interdisciplinary, key; Verbs: discusses, enable, explores, delves, revolutionizing, playing, inhabiting",
+      "id": "10_pos_1",
+      "do_inference": true,
+      "inst": "List all the adjectives and verbs in the first paragraph of the initially provided content. Your answers should be separated by commas and formatted as 'Adjectives: ..., ...; Verbs: ..., ...'."
+    },
+    {
+      "user": "Write a short summary based on the initially provided content.",
+      "sys": "The paper presents a groundbreaking discovery of Quantumis Ore in the Velorian jungles, a unique mineral with the ability to manipulate gravity. Led by Dr. Kaelen Orion and team members Dr. Nyx Solaris and Dr. Aria Celestine, the research explores the ore's properties and its profound implications across various fields. Through extensive field research and analyses, the team discovers the ore's unique helical structure and its unprecedented interaction with quantum fields. This interaction has potential applications in quantum computing and energy transmission. Additionally, the ore plays a crucial role in Veloria's ecosystem, particularly in the development of gravity-resistant flora and fauna, suggesting a symbiotic relationship within the ecosystem. The discovery challenges existing theories in physics and necessitates a reevaluation of the impact of resource extraction on the environment. The paper concludes by emphasizing the need for a balanced approach to scientific exploration, ensuring technological advancement while preserving ecological integrity.",
+      "id": "10_sum_1",
+      "do_inference": true,
+      "inst": "Write a short summary based on the initially provided content."
+    },
+    {
+      "user": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output.",
+      "sys": "science",
+      "id": "10_cls_1",
+      "do_inference": true,
+      "inst": "Classify the initially provided content into one of the following labels: ethics, sports, music, art, science, literature, economics, medicine, food, technology, history, travel, education. Just provide the correct label without any further explanations or extra output."
+    }
+  ]
+}

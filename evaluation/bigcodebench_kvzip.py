@@ -85,6 +85,7 @@ def tokenize_prompt(
     tokenizer,
     instruct_prompt: str,
     max_context_length: int,
+    enable_thinking: bool = True,
 ) -> tuple[torch.Tensor, torch.Tensor]:
     """
     Tokenize instruct_prompt into context_ids / question_ids using the
@@ -102,7 +103,7 @@ def tokenize_prompt(
         ],
         add_generation_prompt=True,
         tokenize=False,
-        enable_thinking=True,
+        enable_thinking=enable_thinking,
     )
     context_text, question_suffix = full_text.split(separator, maxsplit=1)
 
@@ -182,7 +183,7 @@ def run_inference(
     if not isinstance(stop_ids, list):
         stop_ids = [stop_ids]
 
-    for step in tqdm(range(max_new_tokens - 1), desc="Generating", leave=False):
+    for step in range(max_new_tokens - 1):
         outputs = model(
             input_ids=generated_ids[-1].unsqueeze(0).unsqueeze(0),
             past_key_values=cache,
@@ -353,6 +354,7 @@ def worker(
                 tokenizer,
                 instruct_prompt,
                 args.max_context_length,
+                enable_thinking=args.enable_thinking,
             )
             raw_output = run_inference(
                 model=model,
@@ -444,7 +446,7 @@ def parse_args() -> argparse.Namespace:
         help="HuggingFace model ID or local path",
     )
     parser.add_argument(
-        "--dataset", default="bigcode/bigcodebench",
+        "--dataset", default="bigcode/bigcodebench-hard",
         help="HuggingFace dataset ID",
     )
     parser.add_argument(
@@ -487,6 +489,10 @@ def parse_args() -> argparse.Namespace:
         "--output_dir", default="./results/bigcodebench",
         help="Directory for result JSON files",
     )
+    parser.add_argument(
+        "--enable_thinking", action=argparse.BooleanOptionalAction, default=True,
+        help="Enable thinking mode for Qwen3 (--enable_thinking / --no-enable_thinking)",
+    )
     return parser.parse_args()
 
 
@@ -525,8 +531,9 @@ def main() -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     model_tag = args.model.replace("/", "--")
+    thinking_tag = "think" if args.enable_thinking else "nothink"
     output_path = str(
-        output_dir / f"{model_tag}_{args.split}_{args.press}_cr{args.compression_ratio:.2f}.json"
+        output_dir / f"{model_tag}_{args.split}_{args.press}_cr{args.compression_ratio:.2f}_{thinking_tag}.json"
     )
     log.info(f"Results → {output_path}")
 
@@ -547,6 +554,7 @@ def main() -> None:
     log.info("\n=== Results ===")
     log.info(f"  Press          : {args.press}")
     log.info(f"  Compression    : {args.compression_ratio}")
+    log.info(f"  Thinking       : {args.enable_thinking}")
     log.info(f"  Pass@1         : {metrics['pass_at_1']:.2f}%")
     log.info(f"  Passed / Total : {metrics['n_passed']} / {metrics['n_tasks']}")
     log.info(f"Full results saved to {output_path}")
